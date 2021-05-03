@@ -1,6 +1,8 @@
 package racing.car;
 
-public class Position {
+import java.util.Objects;
+
+public class Position implements Comparable{
 
     private static final int START_POSITION = 0;
     private static final int MOVING_DISTANCE = 1;
@@ -24,5 +26,34 @@ public class Position {
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Position position = (Position) o;
+        return value == position.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Position another = (Position) o;
+        if (this.value > another.getValue()) {
+            return 1;
+        }
+        if (this.value < another.getValue()) {
+            return -1;
+        }
+        return 0;
     }
 }
