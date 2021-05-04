@@ -8,8 +8,11 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<String> carNames) {
+        this.cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 
     public List<Car> pickWinners() {
